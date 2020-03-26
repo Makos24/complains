@@ -72,7 +72,7 @@
                         <a class="text-center block border border-blue-500 rounded py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white" href="{{route('admin.services.types')}}">Service Types</a>
                     </li>
                     <li class="flex-1 mr-2">
-                        <a class="text-center block border border-blue-500 rounded py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white" href="{{route('admin.services.options')}}">Service Type Options</a>
+                        <a class="text-center block border border-blue-500 rounded py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white" href="{{route('admin.services.options')}}">Service Items</a>
                     </li>
                 </ul>
             </div>
