@@ -16,9 +16,9 @@
             <div class="shadow-lg bg-red-300 border-l-8 hover:bg-red border-red-vibrant-dark mb-2 p-2 md:w-1/4 mx-2">
                 <div class="p-4 flex flex-col">
                     <a href="#" class="no-underline text-white text-2xl">
-                        244
+                        {{App\Complain::all()->count()}}
                     </a>
-                    <a href="#" class="no-underline text-white text-lg">
+                    <a href="{{route('complains.index')}}" class="no-underline text-white text-lg">
                         Complains Filed Overall
                     </a>
                 </div>
@@ -27,9 +27,9 @@
             <div class="shadow bg-blue-400 border-l-8 hover:bg-blue-400 border-info-dark mb-2 p-2 md:w-1/4 mx-2">
                 <div class="p-4 flex flex-col">
                     <a href="#" class="no-underline text-white text-2xl">
-                        199.4
+                        {{App\Complain::whereDate('created_at', \Carbon\Carbon::today())->count()}}
                     </a>
-                    <a href="#" class="no-underline text-white text-lg">
+                    <a href="{{route('complains.index')}}" class="no-underline text-white text-lg">
                         Complains Filed Today
                     </a>
                 </div>
@@ -38,9 +38,9 @@
             <div class="shadow bg-yellow-400 border-l-8 hover:bg-warning-dark border-warning-dark mb-2 p-2 md:w-1/4 mx-2">
                 <div class="p-4 flex flex-col">
                     <a href="#" class="no-underline text-white text-2xl">
-                        900
+                         {{App\Complain::where('status', 0)->count()}}
                     </a>
-                    <a href="#" class="no-underline text-white text-lg">
+                    <a href="{{route('complains.pending')}}" class="no-underline text-white text-lg">
                         Pending Complains
                     </a>
                 </div>
@@ -49,9 +49,9 @@
             <div class="shadow bg-green-400 border-l-8 hover:bg-success-dark border-success-dark mb-2 p-2 md:w-1/4 mx-2">
                 <div class="p-4 flex flex-col">
                     <a href="#" class="no-underline text-white text-2xl">
-                        500
+                        {{App\Complain::where('status', 1)->count()}}
                     </a>
-                    <a href="#" class="no-underline text-white text-lg">
+                    <a href="{{route('complains.resolved')}}" class="no-underline text-white text-lg">
                         Complains Resolved
                     </a>
                 </div>

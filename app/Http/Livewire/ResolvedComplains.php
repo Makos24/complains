@@ -4,17 +4,26 @@ namespace App\Http\Livewire;
 
 use App\Complain;
 use Livewire\Component;
+use Livewire\WithPagination;
 
-class RecentComplains extends Component
+class ResolvedComplains extends Component
 {
+    use WithPagination;
+    
     protected $listeners = ['complainAdded' => 'showComplainAddedMessage'];
+    public $added = '', $search;
 
-    public $added = '';
+    protected $updatesQueryString = ['search'];
+
+    public function mount()
+    {
+        $this->search = request()->query('search', $this->search);
+    }
 
     public function render()
     {
-        $complains = Complain::orderBy('created_at', 'desc')->paginate(10);
-        return view('livewire.recent-complains', compact('complains'));
+         $complains = Complain::search($this->search)->orderBy('created_at', 'desc')->where('status', 1)->paginate(20);
+        return view('livewire.resolved-complains', compact('complains'));
     }
 
     public function showComplainAddedMessage($d)

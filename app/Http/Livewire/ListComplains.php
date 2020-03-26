@@ -4,20 +4,49 @@ namespace App\Http\Livewire;
 
 use App\Complain;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class ListComplains extends Component
 {
+
+    use WithPagination;
+    
     protected $listeners = ['complainAdded' => 'showComplainAddedMessage'];
-    public $added = '';
+    public $added = '', $search;
+
+    protected $updatesQueryString = ['search'];
+
+    public function mount()
+    {
+        $this->search = request()->query('search', $this->search);
+    }
 
     public function render()
     {
-        $complains = Complain::paginate(20);
+        $complains = Complain::search($this->search)->orderBy('created_at', 'desc')->paginate(20);
         return view('livewire.list-complains', compact('complains'));
     }
 
     public function showComplainAddedMessage($d)
     {
         $this->added = $d;
+    }
+
+    public function resolved($id)
+    {
+        if ($id) {
+            $record = Complain::where('id', $id);
+            $record->update(['status' => 1]);
+            $this->emit('complainAdded', 'resolved');
+        }
+    }
+
+    public function pending($id)
+    {
+        if ($id) {
+            $record = Complain::where('id', $id);
+            $record->update(['status' => 0]);
+            $this->emit('complainAdded', 'marked as pending');
+        }
     }
 }

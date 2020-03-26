@@ -4,6 +4,10 @@
 <div class="container mx-auto">
     <div class="flex flex-wrap justify-center">
         <div class="w-full max-w-sm">
+
+        <div class="text-center">
+            <img src="/images/logo.jpg" width="150px" height="100px" />
+        </div>
             <div class="flex flex-col break-words bg-white border border-2 rounded shadow-md">
 
                 <div class="font-bold bg-gray-300 text-center text-gray-700 py-3 px-6 mb-0">

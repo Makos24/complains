@@ -13,6 +13,29 @@
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
+    <style>
+        
+        input[type="radio"] + label span {
+        transition: background .2s,
+        transform .2s;
+    }
+
+    input[type="radio"] + label span:hover,
+    input[type="radio"] + label:hover span{
+    transform: scale(1.2);
+    } 
+
+    input[type="radio"]:checked + label span {
+    background-color: #3490DC; //bg-blue
+    box-shadow: 0px 0px 0px 2px white inset;
+    }
+
+    input[type="radio"]:checked + label{
+    color: #3490DC; //text-blue
+    }
+
+    </style>
+
     <script src="/js/alpine.js" defer></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <livewire:styles />
@@ -87,7 +110,7 @@
                     <li class="w-full h-full py-3 px-2 border-b border-gray-500 hover:bg-white {{ (request()->routeIs('admin.services.options')) ? 'bg-white' : '' }}">
                         <a href="{{route('admin.services.options')}}" class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
                             <i class="fas fa-table float-left mx-2"></i>
-                            Options
+                            Items
                             <span><i class="fa fa-angle-right float-right"></i></span>
                         </a>
                     </li>

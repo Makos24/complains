@@ -25,7 +25,7 @@
                         <!-- content -->
                         <h4 class="font-bold"></h4>
 
-                        <aside class="max-w-lg mt-6 p-6">
+                        <aside class="max-w-lg mt-2 p-6">
                             <livewire:create-complain />
                         </aside>
                     </div>
@@ -43,7 +43,7 @@
                         <!-- content -->
                         <h4 class="font-bold"></h4>
 
-                        <aside class="max-w-lg mt-6 p-6">
+                        <aside class="max-w-lg mt-2 p-6">
                             @livewire('edit-complain')
                         </aside>
                     </div>

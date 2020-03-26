@@ -70,7 +70,7 @@
                                         {{ $item->id }}
                                     </td>
                                     <td>
-                                        {{ $item->first_name . ' ' . $item->last_name }}
+                                        {{ $item->name }}
                                     </td>
                                     <td>
                                         {{ $item->email }}

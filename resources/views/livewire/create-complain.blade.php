@@ -1,6 +1,19 @@
 <form class="w-full max-w-lg" wire:submit.prevent="create" action="#">
 
-    <div class="flex flex-wrap -mx-3 mb-6">
+     <div class="flex flex-wrap -mx-3 mb-2">
+        <div class="w-full px-3 mb-6 md:mb-0">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                Plot Number
+            </label>
+
+            <input wire:model="plot_no" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" required>
+            @error('plot_no')
+            <p class="text-red-500 text-xs italic">{{$message}}</p>
+            @enderror
+        </div>
+
+    </div>
+    <div class="flex flex-wrap -mx-3 mb-2">
         <div class="w-full px-3 mb-6 md:mb-0">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                 Complainants Name
@@ -14,7 +27,7 @@
 
     </div>
 
-    <div class="flex flex-wrap -mx-3 mb-6">
+    <div class="flex flex-wrap -mx-3 mb-2">
         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                 Phone Number
@@ -35,7 +48,7 @@
         </div>
     </div>
 
-    <div class="flex flex-wrap -mx-3 mb-6">
+    <div class="flex flex-wrap -mx-3 mb-2">
         <div class="w-full px-3 mb-6 md:mb-0">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                 Service
@@ -55,7 +68,7 @@
 
     </div>
 
-    <div class="flex flex-wrap -mx-3 mb-6 {{ count($this->types)==0 ? 'hidden' : '' }}">
+    <div class="flex flex-wrap -mx-3 mb-2 {{ count($this->types)==0 ? 'hidden' : '' }}">
         <div class="w-full px-3 mb-6 md:mb-0">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                 Type
@@ -75,14 +88,14 @@
 
     </div>
 
-    <div class="flex flex-wrap -mx-3 mb-6 {{ count($this->options)==0 ? 'hidden' : '' }}">
+    <div class="flex flex-wrap -mx-3 mb-2 {{ count($this->options)==0 ? 'hidden' : '' }}">
         <div class="w-full px-3 mb-6 md:mb-0">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                Option
+                Item
             </label>
 
             <select wire:model="option_id" class="{{ count($this->options)==0 ? 'hidden' : '' }} appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" required>
-                <option value="">Select Option</option>
+                <option value="">Select Item</option>
                 @foreach($options as $option)
 
                 <option value="{{$option->id}}">{{$option->name}}</option>
@@ -96,13 +109,35 @@
     </div>
 
 
-    <div class="flex flex-wrap -mx-3 mb-6">
+    <div class="flex flex-wrap -mx-3 mb-2 {{ $description ? '' : 'hidden'}}">
         <div class="w-full px-3 mb-6 md:mb-0">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                 Description
             </label>
-            <input wire:model.debounce.500ms="description" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+            <input wire:model="description" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
             @error('description')
+            <p class="text-red-500 text-xs italic">{{$message}}</p>
+            @enderror
+        </div>
+    </div>
+    <div class="flex flex-wrap -mx-3 mb-2 {{ $requirements ? '' : 'hidden'}}">
+        <div class="w-full px-3 mb-6 md:mb-0">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                Requirements
+            </label>
+            <input wire:model="requirements" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+            @error('requirements')
+            <p class="text-red-500 text-xs italic">{{$message}}</p>
+            @enderror
+        </div>
+    </div>
+    <div class="flex flex-wrap -mx-3 mb-2 {{ $amount ? '' : 'hidden'}}">
+        <div class="w-full px-3 mb-6 md:mb-0">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                Amount Due
+            </label>
+            <input wire:model="amount" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+            @error('amount')
             <p class="text-red-500 text-xs italic">{{$message}}</p>
             @enderror
         </div>

@@ -1,15 +1,21 @@
 <div>
     <div class="flex flex-1  flex-col md:flex-row lg:flex-row mx-2">
         <div class="mb-2 border-solid border-gray-300 rounded border shadow-sm w-full">
-@if ($added)
+            @if ($added)
             <div class="text-sm border border-t-8 rounded text-green-700 border-green-600 bg-green-100 px-3 py-4 mb-4" role="alert">
                 {{ 'Complain '.$added}}
             </div>
             @endif
-            <div class="bg-gray-200 px-2 py-3 border-solid border-gray-200 border-b">
-
-            </div>
+           
             <div class="p-3">
+             <div class="flex flex-wrap -mx-3 mb-3">
+        <div class="w:1/6 px-3 mb-6 md:mb-0" wire:loading.class="is-loading">
+            
+            <input wire:model="search"  placeholder="Search complains" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"  />
+            
+
+        </div>
+    </div>
                 <table class="table-responsive w-full rounded">
                     <thead>
                         <tr>
@@ -25,7 +31,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($complains as $complain)
+                        @foreach($complains->where('status', 0) as $complain)
                         <tr>
 
                             <td class="border px-4 py-2">{{$complain->plot_no}}</td>
@@ -42,8 +48,8 @@
 
                                 <a href="{{route('complains.print', $complain->id)}}" wire:click="$emit('complainPrint',{{$complain->id}})" class="bg-blue-300 cursor-pointer rounded p-1 text-white">
                                     <i class="fa fa-edit"></i>Print</a>
-                                <!-- <a href="#" wire:click="$emit('complainEdit',{{$complain->id}})" class="bg-teal-300 cursor-pointer rounded p-1 text-white">
-                                    <i class="fa fa-edit"></i>Edit</a> -->
+                                <a href="#" wire:click="$emit('complainEdit',{{$complain->id}})" class="bg-teal-300 cursor-pointer rounded p-1 text-white">
+                                    <i class="fa fa-edit"></i>Edit</a>
                                 @if($complain->status)
                                     <a href="#" title="Mark as pending" onclick="confirm('Are you sure you want to mark as pending?') || event.stopImmediatePropagation()" wire:click="pending({{$complain->id}})" class="bg-yellow-300 cursor-pointer rounded p-1 text-white">
                                         <i class="fa fa-trash"></i>Pending
@@ -58,6 +64,9 @@
                         @endforeach
                     </tbody>
                 </table>
+                 <div class="livewire-pagination">
+                        {{ $complains->links() }}
+                    </div>
             </div>
         </div>
     </div>

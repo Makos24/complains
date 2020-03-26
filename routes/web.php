@@ -26,6 +26,8 @@ Route::group(
     ],
     function () {
         route::get('/', 'ComplainsController@index')->name('index');
+        route::get('/pending', 'ComplainsController@pending')->name('pending');
+        route::get('/resolved', 'ComplainsController@resolved')->name('resolved');
         route::get('/print/{complain}', 'ComplainsController@print')->name('print');
     }
 );

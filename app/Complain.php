@@ -33,4 +33,16 @@ class Complain extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public static function search($query)
+    {
+        return empty($query) ? static::query()
+            : static::where('name', 'like', '%' . $query . '%')
+            ->orWhere('phone', 'like', '%' . $query . '%')
+            ->orWhere('plot_no', 'like', '%' . $query . '%')
+            ->orWhere('address', 'like', '%' . $query . '%')
+            ->orWhere('description', 'like', '%' . $query . '%');
+    }
+
+    
 }
