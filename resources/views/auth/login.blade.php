@@ -5,7 +5,7 @@
     <div class="flex flex-wrap justify-center">
         <div class="w-full max-w-sm">
 
-        <div class="text-center">
+        <div class="flex flex-wrap justify-center">
             <img src="/images/logo.jpg" width="150px" height="100px" />
         </div>
             <div class="flex flex-col break-words bg-white border border-2 rounded shadow-md">

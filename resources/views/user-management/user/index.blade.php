@@ -44,7 +44,7 @@
                                     Email
                                 </th>
                                 <th>
-                                    Mobile
+                                    Username
                                 </th>
                                 <th>
                                     Status
@@ -65,7 +65,7 @@
                         </thead>
                         <tbody>
                             @foreach ($users as $item)
-                                <tr class="{{$item->status == 'blocked' ? ' bg-warning ' : '' }} {{$item->status == 'deleted' ? ' bg-danger ' : '' }}">
+                                <tr class="{{$item->status == 'blocked' ? ' bg-warning ' : '' }} {{$item->deleted_at ? ' bg-danger ' : '' }}">
                                     <td>
                                         {{ $item->id }}
                                     </td>
@@ -76,7 +76,7 @@
                                         {{ $item->email }}
                                     </td>
                                     <td>
-                                        {{ $item->mobile }}
+                                        {{ $item->username }}
                                     </td>
                                     <td>
                                         {{ $item->status }}
@@ -99,20 +99,23 @@
                                         @endforelse
                                     </td>
                                     <td>
-                                        @if ($item->status == 'deleted')
+                                        @if($item->deleted_at)
                                             <form action="{{ route('admin.user_management.user.restore', $item->id) }}" method="post" class="inline-block">
                                                 @method('PUT')
                                                 {{ csrf_field() }}
-                                                <button type="submit" class="btn btn-outline-danger btn-sm">Restore</button>
+                                                <button type="submit" class="btn btn-outline-success btn-sm">Restore</button>
                                             </form>
                                         @else
+                                        
                                             <a href="{{ route('admin.user_management.user.edit', $item->id) }}" class="btn btn-outline-dark btn-sm">Edit</a>
 
+                                            @if(auth()->id() != $item->id)
                                             <form action="{{ route('admin.user_management.user.delete', $item->id) }}" method="post" class="inline-block">
                                                 @method('DELETE')
                                                 {{ csrf_field() }}
                                                 <button type="submit" class="btn btn-outline-danger btn-sm">Delete</button>
                                             </form>
+                                            @endif
                                         @endif
                                     </td>
                                 </tr>

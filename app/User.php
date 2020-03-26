@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Entities\Department;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -18,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','deleted_at'
     ];
 
     /**
@@ -38,4 +39,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function departments()
+    {
+        $table  = config("laravel_user_management.user_department_user_table");
+
+        return $this->belongsToMany(
+            Department::class,
+            $table,
+            'user_id',
+            'department_id'
+        );
+    }
 }

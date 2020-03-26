@@ -38,16 +38,11 @@
                 <div class="row">
                     <div class="col-4">
                         <div class="form-group">
-                            <label for="first_name">First Name</label>
-                            <input type="text" name="first_name" value="{{ $user->first_name }}" class="form-control" id="first_name" placeholder="First Name like: Mekaeil">
+                            <label for="first_name">Full Name</label>
+                            <input type="text" name="name" value="{{ $user->name }}" class="form-control" id="first_name" placeholder="Full Name">
                         </div>
                     </div>
-                    <div class="col-4">
-                        <div class="form-group">
-                            <label for="last_name">Last Name</label>
-                            <input type="text" name="last_name" value="{{ $user->last_name  }}" class="form-control" id="last_name" placeholder="Last Name like: Andisheh">
-                        </div>
-                    </div>
+                    
                     <div class="col-4">
                         <div class="form-group">
                             <label for="guard_name">Departments</label>
@@ -71,8 +66,8 @@
                     </div>
                     <div class="col-4">
                         <div class="form-group">
-                            <label for="mobile">Mobile</label>
-                            <input type="text" name="mobile" value="{{ $user->mobile }}" class="form-control" id="mobile" placeholder="Mobile number like: 091xxxxxxxx">
+                            <label for="mobile">Username</label>
+                            <input type="text" name="username" value="{{ $user->username }}" class="form-control" id="mobile" placeholder="Mobile number like: 091xxxxxxxx">
                         </div>
                     </div>
                     <div class="col-4">
