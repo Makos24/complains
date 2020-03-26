@@ -40,7 +40,7 @@
                             <td class="border px-4 py-2">
 
 
-                                <a href="{{route('complains.print', $complain->id)}}" wire:click="$emit('complainPrint',{{$complain->id}})" class="bg-blue-300 cursor-pointer rounded p-1 text-white">
+                                <a href="{{route('complains.print', $complain->id)}}" target="_blank" wire:click="$emit('complainPrint',{{$complain->id}})" class="bg-blue-300 cursor-pointer rounded p-1 text-white">
                                     <i class="fa fa-edit"></i>Print</a>
                                 <!-- <a href="#" wire:click="$emit('complainEdit',{{$complain->id}})" class="bg-teal-300 cursor-pointer rounded p-1 text-white">
                                     <i class="fa fa-edit"></i>Edit</a> -->
