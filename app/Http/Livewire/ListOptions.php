@@ -21,7 +21,8 @@ class ListOptions extends Component
 
     public function render()
     {
-        $options = Option::search($this->search)->paginate(20);
+        $options = Option::search($this->search)->with('type')->paginate(20);
+        // dd($options)
         return view('livewire.list-options', compact('options'));
     }
 

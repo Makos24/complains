@@ -31,6 +31,8 @@
                     </thead>
                     <tbody>
                         @foreach($options as $option)
+
+                    
                         <tr>
 
                             <td class="border px-4 py-3">{{$option->name}}</td>

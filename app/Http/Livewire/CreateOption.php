@@ -8,16 +8,26 @@ use Livewire\Component;
 
 class CreateOption extends Component
 {
-    public $types, $type_id, $name, $description,$amount,$requirements,$fx_amount,$b1,$c1,$d1,$radio,$radio1;
+    public $types, $type_id, $name, $payment_type, $description,$amount,$requirements,$fx_amount,$b1,$c1,$d1,$type1;
+    public $pt,$c,$d,$fa;
     public function render()
     {
 
-        if(!empty($this->fx_amount) && $this->radio == 1){
-            $this->amount = $this->fx_amount;
+        if(!empty($this->fx_amount) && $this->payment_type == 1){
+           $this->c1 = 0;
+           $this->d1 = 0;
+
+            $this->c = 0;
+           $this->d = 0;
+          
+            $this->amount = 0;
+            $this->pt = $this->payment_type;
+            $this->fa = $this->fx_amount;
         }
         
-        if(!empty($this->b1) && !empty($this->c1) && !empty($this->d1) && $this->radio == 2){
-            $this->amount = ($this->b1 * $this->c1) + ($this->b1 * $this->d1);
+        if(!empty($this->c1) && !empty($this->d1) && $this->payment_type == 2){
+            $this->fx_amount = 0;
+            $this->amount = 0;
         }
         
         $this->types = Type::all();
@@ -26,17 +36,29 @@ class CreateOption extends Component
 
     public function create()
     {
-        Option::create($this->validate([
+        $this->validate([
             'type_id' => 'required',
             'name' => 'required',
             'requirements' => 'required',
             'amount' => 'required',
-            'fx_amount' => 'nullable',
-            'b1' => 'nullable',
-            'c1' => 'nullable',
-            'd1' => 'nullable',
+            'payment_type' => 'required',
+            'fx_amount' => 'required',
+            'c1' => 'required',
+            'd1' => 'required',
             'description' => 'required'
-        ]));
+        ]);
+        Option::create([
+            'type_id' => $this->type_id,
+            'name' => $this->name,
+            'requirements' => $this->requirements,
+            'amount' => $this->amount,
+            'payment_type' => $this->pt,
+            'fx_amount' => $this->fa,
+            'c1' => $this->c,
+            'd1' => $this->d,
+            'description' => $this->description
+        ]);
+
         $this->reset();
         $this->emit('optionAdded', 'created');
         $this->dispatchBrowserEvent('close-modal');

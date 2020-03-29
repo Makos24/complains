@@ -8,9 +8,9 @@
 
             <select class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" wire:model="type_id" required>
                 <option value="">Select type</option>
-                @foreach($types as $type)
+                @foreach($types as $item)
 
-                <option value="{{$type->id}}">{{$type->name}}</option>
+                <option value="{{$item->id}}">{{$item->name}}</option>
                 @endforeach
             </select>
             @error('type_id')
@@ -34,28 +34,28 @@
     </div>
 
 <div class="flex items-center mr-4 mb-3">
-    <input id="radio1" type="radio" wire:model="radio" value="1"  class="hidden" checked />
-    <label for="radio1" class="flex items-center cursor-pointer">
+    <input id="type1" type="radio" wire:model="payment_type" value="1"  class="hidden" checked />
+    <label for="type1" class="flex items-center cursor-pointer">
      <span class="w-8 h-8 inline-block mr-2 rounded-full border border-grey flex-no-shrink"></span>
      Fixed</label>
-     <div class="w:1/4 px-3 mb-6 md:mb-0 {{$radio == 1 ? '' : 'hidden'}}">
+     <div class="w:1/4 px-3 mb-6 md:mb-0 {{$payment_type == 1 ? '' : 'hidden'}}">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                 Amount
             </label>
             <input wire:model="fx_amount" type="number" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
-            @error('description')
+            @error('fx_amount')
             <p class="text-red-500 text-xs italic">{{$message}}</p>
             @enderror
         </div>
    </div>
 
    <div class="flex items-center mr-4 mb-3">
-    <input id="radio2" type="radio"  wire:model="radio" value="2" class="hidden" />
-    <label for="radio2" class="flex items-center cursor-pointer">
+    <input id="type2" type="radio"  wire:model="payment_type" value="2" class="hidden" />
+    <label for="type2" class="flex items-center cursor-pointer">
      <span class="w-8 h-8 inline-block mr-2 rounded-full border border-grey flex-no-shrink"></span>
      Calculated</label>
      
-     <div class="w:1/3 px-3 mb-6 md:mb-0 {{$radio == 2 ? '' : 'hidden'}}">
+     <!-- <div class="w:1/3 px-3 mb-6 md:mb-0 {{$payment_type == 2 ? '' : 'hidden'}}">
            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                B1
             </label>
@@ -63,7 +63,8 @@
             @error('b1')
             <p class="text-red-500 text-xs italic">{{$message}}</p>
             @enderror
-        </div><div class="w:1/3 px-3 mb-6 md:mb-0 {{$radio == 2 ? '' : 'hidden'}}">
+        </div> -->
+        <div class="w:1/3 px-3 mb-6 md:mb-0 {{$payment_type == 2 ? '' : 'hidden'}}">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                 C1
             </label>
@@ -71,7 +72,7 @@
             @error('c1')
             <p class="text-red-500 text-xs italic">{{$message}}</p>
             @enderror
-        </div><div class="w:1/3 px-3 mb-6 md:mb-0 {{$radio == 2 ? '' : 'hidden'}}">
+        </div><div class="w:1/3 px-3 mb-6 md:mb-0 {{$payment_type == 2 ? '' : 'hidden'}}">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                 D1
             </label>
@@ -84,7 +85,7 @@
    </div>
 
 
-<div class="flex flex-wrap -mx-3 mb-3">
+<!-- <div class="flex flex-wrap -mx-3 mb-3">
         <div class="w-full px-3 mb-6 md:mb-0">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                 Amount Due
@@ -94,7 +95,7 @@
             <p class="text-red-500 text-xs italic">{{$message}}</p>
             @enderror
         </div>
-    </div>
+    </div> -->
 
     <div class="flex flex-wrap -mx-3 mb-3">
         <div class="w-full px-3 mb-6 md:mb-0">
