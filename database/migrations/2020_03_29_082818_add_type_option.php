@@ -14,7 +14,7 @@ class AddTypeOption extends Migration
     public function up()
     {
         Schema::table('options', function (Blueprint $table) {
-            $table->integer('type');
+            $table->integer('type')->nullable();
         });
 
         Schema::table('complains', function (Blueprint $table) {
