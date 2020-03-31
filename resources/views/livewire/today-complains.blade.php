@@ -31,7 +31,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($complains->where('created_at', \Carbon\Carbon::today()) as $complain)
+                        @foreach($complains->where('created_at', '>=', \Carbon\Carbon::today()) as $complain)
                         <tr>
 
                             <td class="border px-4 py-2">{{$complain->plot_no}}</td>

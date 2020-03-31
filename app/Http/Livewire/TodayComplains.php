@@ -23,7 +23,7 @@ class TodayComplains extends Component
     public function render()
     {
         $complains = Complain::search($this->search)->orderBy('created_at', 'desc')
-        ->where('created_at', Carbon::today())->paginate(20);
+        ->whereDate('created_at', Carbon::today())->paginate(20);
         return view('livewire.today-complains', compact('complains'));
     }
     public function showComplainAddedMessage($d)
