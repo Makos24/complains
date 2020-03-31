@@ -64,6 +64,19 @@
                                 @endif
                                 @endif
 
+                                 @if(auth()->user()->hasRole('User'))
+                                
+                                @if($complain->status)
+                                    <a href="#" class="bg-teal-300 cursor-pointer rounded p-1 text-white">
+                                        <i class="fa fa-trash"></i>Resolved
+                                    </a>
+                                @else
+                                    <a href="#"  class="bg-yellow-300 cursor-pointer rounded p-1 text-white">
+                                    <i class="fa fa-check"></i>Pending
+                                    </a>
+                                @endif
+                                @endif
+
                             </td>
                         </tr>
                         @endforeach
