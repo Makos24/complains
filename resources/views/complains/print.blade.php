@@ -31,6 +31,7 @@
 
     <div class="flex justify-between mb-8 px-3">
         <div>
+            {{$complain->plot_no}}<br />
             {{$complain->name}}<br />
             {{$complain->address}}<br />
             {{$complain->phone}}<br />
