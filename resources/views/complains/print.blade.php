@@ -82,9 +82,9 @@
             <img src="/images/frame.png" width="150px" height="100px" />
             <div class="mt-6">
             <h4 class="text-center mb-2 font-bold underline">Bank Details</h4>
-            <span class="px-1 font-bold">Bank: </span>{{$account->bank}}<br />
-            <span class="px-1 font-bold">Account Name: </span>{{$account->name}}<br />
-            <span class="px-1 font-bold">Account Number: </span>{{$account->number}}<br />
+            <span class="px-1 font-bold">Bank: </span>{{$account ? $account->bank : ''}}<br />
+            <span class="px-1 font-bold">Account Name: </span>{{$account ? $account->name : ''}}<br />
+            <span class="px-1 font-bold">Account Number: </span>{{$account ? $account->number : ''}}<br />
            
         </div>
         </div>
