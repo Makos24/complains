@@ -38,10 +38,10 @@ class UsersController extends Controller
     {
         $user = User::create([
             'name'    => $request->name,
-            'email'         => $request->email,
-            'username'        => $request->username,
-            'status'        => $request->status ?? 'pending',
-            'password'      => bcrypt($request->password)
+            'email' => $request->email,
+            'username' => $request->username,
+            'status' => $request->status ?? 'pending',
+            'password' => bcrypt($request->password)
         ]);
 
         $roles       = $request->roles       ?? [];
@@ -78,7 +78,7 @@ class UsersController extends Controller
     {
 
         if ($user = User::find($ID)) {
-            $user->update($ID, [
+            $user->update([
                 'name'    => $request->name,
                 'email'         => $request->email,
                 'status'        => $request->status,

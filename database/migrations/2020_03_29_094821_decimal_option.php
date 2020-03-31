@@ -13,8 +13,8 @@ class DecimalOption extends Migration
      */
     public function up()
     {
-        Schema::table('options', function (Blueprint $table) {
-            //
+        Schema::table('complains', function (Blueprint $table) {
+            $table->decimal('b1')->nullable();
         });
     }
 

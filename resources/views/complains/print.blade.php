@@ -22,7 +22,7 @@
     <div class="flex items-center justify-between mb-8 px-3">
         <div>
             <span class="text-2xl">Complain ID #</span>: {{strtoupper(substr($complain->complain_id, 5, 10))}}<br />
-            <span>Date</span>: {{$complain->created_at}}<br />
+            <span>Date</span>: {{\Carbon\Carbon::parse($complain->created_at)->toFormattedDateString()}}<br />
         </div>
         <div class="text-right">
             <img src="/images/logo.jpg" width="150px" height="100px" />
@@ -34,14 +34,15 @@
             {{$complain->name}}<br />
             {{$complain->address}}<br />
             {{$complain->phone}}<br />
-            hello@pixelandtonic.com<br />
+           {{$complain->email}}<br />
             <!-- {{$complain->phone}} -->
         </div>
         <div class="text-right">
-            Borno State Nigeria<br />
-            Street 12<br />
-            10000 City<br />
-            hello@yoursite.com
+            Along Biu Road, <br />
+            PMB 1081 <br />
+            Maiduguri, Borno State. <br />
+            Nigeria. <br />
+            
         </div>
     </div>
 
@@ -77,12 +78,20 @@
 
     
 
-     <div class="flex flex-wrap justify-center">
+     <div class="flex flex-wrap justify-between">
             <img src="/images/frame.png" width="150px" height="100px" />
+            <div class="mt-6">
+            <h4 class="text-center mb-2 font-bold underline">Bank Details</h4>
+            <span class="px-1 font-bold">Bank: </span>{{$account->bank}}<br />
+            <span class="px-1 font-bold">Account Name: </span>{{$account->name}}<br />
+            <span class="px-1 font-bold">Account Number: </span>{{$account->number}}<br />
+           
         </div>
+        </div>
+        
 
     <div class="mb-8 px-3">
-        <span>To be paid before</span> {{\Carbon\Carbon::parse($complain->created_at)->addWeek(1)->toFormattedDateString()}} on <b class="underline font-bold">Account details here</b> specifying the invoice #
+        <span>To be paid before</span> {{\Carbon\Carbon::parse($complain->created_at)->addWeek(1)->toFormattedDateString()}} in to <b class="underline font-bold">Bank details here</b> specifying the complain ID
     </div>
 
     <div class="mb-8 text-4xl text-center px-3">
@@ -90,7 +99,7 @@
     </div>
 
     <div class="text-center text-sm px-3">
-        bogis.com
+        www.bogis.com.ng
     </div>
 </div>
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Account;
 use App\Complain;
 use Illuminate\Http\Request;
 
@@ -22,8 +23,14 @@ class ComplainsController extends Controller
         return view('complains.resolved');
     }
 
+    public function today()
+    {
+        return view('complains.today');
+    }
+
     public function print(Complain $complain)
     {
-        return view('complains.print', compact('complain'));
+        $account = Account::first();
+        return view('complains.print', compact('complain','account'));
     }
 }

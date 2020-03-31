@@ -83,9 +83,11 @@
             </div>
         </nav>
         <div class="flex flex-1">
+        @if(auth()->user()->hasRole('admin'))
             <aside id="sidebar" class="bg-gray-200 w-1/2 md:w-1/6 lg:w-1/6 border-r border-side-nav hidden md:block lg:block">
-
+                
                 <ul class="list-reset flex flex-col">
+                
                     <li class=" w-full h-full py-3 px-2 border-b border-gray-500 hover:bg-white {{ (request()->routeIs('admin.index')) ? 'bg-white' : '' }}">
                         <a href="{{route('admin.index')}}" class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
                             <i class="fas fa-tachometer-alt float-left mx-2 font-bold"></i>
@@ -114,6 +116,7 @@
                             <span><i class="fa fa-angle-right float-right"></i></span>
                         </a>
                     </li>
+                  
                     <li class="w-full h-full py-3 px-2 border-b border-gray-500 hover:bg-white {{ (request()->routeIs('complains.index')) ? 'bg-white' : '' }}">
                         <a href="{{route('complains.index')}}" class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
                             <i class="fab fa-uikit float-left mx-2"></i>
@@ -121,6 +124,7 @@
                             <span><i class="fa fa-angle-right float-right"></i></span>
                         </a>
                     </li>
+                   
                     <li class="w-full h-full py-3 px-2 border-b border-gray-500 hover:bg-white {{ (request()->routeIs('complains.index')) ? 'bg-white' : '' }}">
                         <a href="{{url('admin/user-management/user')}}" class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
                             <i class="fab fa-uikit float-left mx-2"></i>
@@ -128,12 +132,45 @@
                             <span><i class="fa fa-angle-right float-right"></i></span>
                         </a>
                     </li>
+                    
 
                 </ul>
-                </li>
-                </ul>
+                
 
             </aside>
+            @endif
+
+             @if(auth()->user()->hasRole('sub-admin'))
+                <aside id="sidebar" class="bg-gray-200 w-1/2 md:w-1/6 lg:w-1/6 border-r border-side-nav hidden md:block lg:block">
+                
+                <ul class="list-reset flex flex-col">
+                
+                    <li class=" w-full h-full py-3 px-2 border-b border-gray-500 hover:bg-white {{ (request()->routeIs('admin.index')) ? 'bg-white' : '' }}">
+                        <a href="{{route('sub-admin.index')}}" class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
+                            <i class="fas fa-tachometer-alt float-left mx-2 font-bold"></i>
+                            Dashboard
+                            <span><i class="fas fa-angle-right float-right"></i></span>
+                        </a>
+                    </li>
+                   
+                   
+                  
+                    <li class="w-full h-full py-3 px-2 border-b border-gray-500 hover:bg-white {{ (request()->routeIs('complains.index')) ? 'bg-white' : '' }}">
+                        <a href="{{route('complains.index')}}" class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
+                            <i class="fab fa-uikit float-left mx-2"></i>
+                            Complains
+                            <span><i class="fa fa-angle-right float-right"></i></span>
+                        </a>
+                    </li>
+                   
+                    
+
+                </ul>
+               
+
+            </aside>
+             @endif
+
             @yield('content')
         </div>
 

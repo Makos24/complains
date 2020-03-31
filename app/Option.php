@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Option extends Model
 {
     use SoftDeletes;
-    protected $fillable = ['type_id', 'name', 'description','amount','requirements'];
+    protected $guarded = ['id'];
 
     public function type()
     {

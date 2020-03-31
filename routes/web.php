@@ -28,6 +28,19 @@ Route::group(
         route::get('/', 'ComplainsController@index')->name('index');
         route::get('/pending', 'ComplainsController@pending')->name('pending');
         route::get('/resolved', 'ComplainsController@resolved')->name('resolved');
+        route::get('/today', 'ComplainsController@today')->name('today');
         route::get('/print/{complain}', 'ComplainsController@print')->name('print');
+    }
+);
+
+Route::group(
+    [
+        'prefix'        => 'sub-admin',
+        'as'            => 'sub-admin.',
+        'middleware'    => ['auth','role:sub-admin']
+    ],
+    function () {
+        route::get('/', 'AdminController@index')->name('index');
+        
     }
 );

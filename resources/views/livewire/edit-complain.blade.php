@@ -26,8 +26,7 @@
         </div>
 
     </div>
-
-    <div class="flex flex-wrap -mx-3 mb-2">
+<div class="flex flex-wrap -mx-3 mb-2">
         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                 Phone Number
@@ -39,13 +38,27 @@
         </div>
         <div class="w-full md:w-1/2 px-3">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                Email Address
+            </label>
+            <input wire:model="email" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" required>
+            @error('email')
+            <p class="text-red-500 text-xs italic">{{$message}}</p>
+            @enderror
+        </div>
+    </div>
+
+    <div class="flex flex-wrap -mx-3 mb-2">
+        <div class="w-full px-3 mb-6 md:mb-0">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                 Address
             </label>
-            <input wire:model="address" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" required>
+
+            <input wire:model="address" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" required>
             @error('address')
             <p class="text-red-500 text-xs italic">{{$message}}</p>
             @enderror
         </div>
+
     </div>
 
     <div class="flex flex-wrap -mx-3 mb-2">
@@ -131,6 +144,7 @@
             @enderror
         </div>
     </div>
+    @if($pt == 1)
     <div class="flex flex-wrap -mx-3 mb-2 {{ $amount ? '' : 'hidden'}}">
         <div class="w-full px-3 mb-6 md:mb-0">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
@@ -142,6 +156,29 @@
             @enderror
         </div>
     </div>
+    @elseif($pt == 2)
+     <div class="flex items-center mr-4 mb-3">
+    
+        <div class="w:1/3 px-3 mb-6 md:mb-0">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                B1
+            </label>
+            <input wire:model="b1" type="number" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+            @error('b1')
+            <p class="text-red-500 text-xs italic">{{$message}}</p>
+            @enderror
+        </div><div class="w:1/3 px-3 mb-6 md:mb-0">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                Amount Due
+            </label>
+            <input wire:model="amount" type="number" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+            @error('amount')
+            <p class="text-red-500 text-xs italic">{{$message}}</p>
+            @enderror
+        </div>
+     
+   </div>
+    @endif
     <div style="width: 550px"></div>
 
     <div class="flex items-center justify-between">

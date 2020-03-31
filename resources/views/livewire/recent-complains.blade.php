@@ -42,16 +42,18 @@
 
                                 <a href="{{route('complains.print', $complain->id)}}" target="_blank" wire:click="$emit('complainPrint',{{$complain->id}})" class="bg-blue-300 cursor-pointer rounded p-1 text-white">
                                     <i class="fa fa-edit"></i>Print</a>
+                                    @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('sub-admin'))
                                 <!-- <a href="#" wire:click="$emit('complainEdit',{{$complain->id}})" class="bg-teal-300 cursor-pointer rounded p-1 text-white">
                                     <i class="fa fa-edit"></i>Edit</a> -->
                                 @if($complain->status)
-                                    <a href="#" title="Mark as pending" onclick="confirm('Are you sure you want to mark as pending?') || event.stopImmediatePropagation()" wire:click="pending({{$complain->id}})" class="bg-yellow-300 cursor-pointer rounded p-1 text-white">
+                                    <a href="#" title="Mark as pending" onclick="confirm('Are you sure you want to mark as pending?') || event.stopImmediatePropagation()" wire:click="pending({{$complain->id}})" class="bg-teal-300 cursor-pointer rounded p-1 text-white">
                                         <i class="fa fa-trash"></i>Pending
                                     </a>
                                 @else
-                                    <a href="#" title="mark as resolved" onclick="confirm('Are you sure you want to mark as resolved?') || event.stopImmediatePropagation()" wire:click="resolved({{$complain->id}})" class="bg-teal-300 cursor-pointer rounded p-1 text-white">
-                                    <i class="fa fa-check"></i>Resolved
+                                    <a href="#" title="mark as resolved" onclick="confirm('Are you sure you want to mark as resolved?') || event.stopImmediatePropagation()" wire:click="resolved({{$complain->id}})" class="bg-yellow-300 cursor-pointer rounded p-1 text-white">
+                                    <i class="fa fa-check"></i>Resolve
                                     </a>
+                                @endif
                                 @endif
                             </td>
                         </tr>

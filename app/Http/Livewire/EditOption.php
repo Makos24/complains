@@ -16,8 +16,8 @@ class EditOption extends Component
 
         if(!empty($this->fx_amount) && $this->type1 == 1){
              $this->amount = 0;
-            $this->c1 = '';
-             $this->d1 = '';
+            $this->c1 = 0;
+             $this->d1 = 0;
         }
         
         if(!empty($this->c1) && !empty($this->d1) && $this->type1 == 2){

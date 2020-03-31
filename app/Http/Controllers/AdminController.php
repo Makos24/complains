@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Account;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -14,6 +15,12 @@ class AdminController extends Controller
     public function index()
     {
         return view('admin.index');
+    }
+
+    public function account()
+    {
+        $account = Account::first();
+        return view('admin.account', compact('account'));
     }
 
     /**
@@ -34,7 +41,22 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if($acc = Account::first()){
+            $acc->update($request->validate([
+            'name' => 'required',
+            'bank' => 'required',
+            'number' => 'required',
+        ]));
+        }else{
+            Account::create($request->validate([
+            'name' => 'required',
+            'bank' => 'required',
+            'number' => 'required',
+        ]));
+        }
+        
+
+        return back()->with('info', 'Done');
     }
 
     /**

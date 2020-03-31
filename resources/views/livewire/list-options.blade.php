@@ -25,7 +25,7 @@
                             <th class="border w-1/6 px-4 py-2">Service Type</th>
                             <th class="border w-1/5 px-4 py-2">Requirements</th>
                             <th class="border w-1/4 px-4 py-2">Description</th>
-                            <th class="border w-1/7 px-4 py-2">Amount</th>
+                            <th class="border w-1/7 px-4 py-2">Fee Type</th>
                             <th class="border w-1/7 px-4 py-2">Actions</th>
                         </tr>
                     </thead>
@@ -39,7 +39,7 @@
                             <td class="border px-4 py-2">{{$option->type->name}}</td>
                             <td class="border px-4 py-2">{{$option->requirements}}</td>
                             <td class="border px-4 py-2">{{$option->description}}</td>
-                            <td class="border px-4 py-2">{{$option->amount}}</td>
+                            <td class="border px-4 py-2">{{$option->payment_type == 1 ? 'Fixed' : 'Calculated'}}</td>
 
                             <td class="border px-4 py-2">
 

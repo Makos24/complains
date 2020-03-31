@@ -27,6 +27,8 @@ class HomeController extends Controller
         //dd($user->roles());
         if ($user->hasRole('admin')) {
             return redirect('admin');
+        }elseif($user->hasRole('sub-admin')){
+            return redirect('sub-admin');
         } else {
             return redirect('complains');
         }

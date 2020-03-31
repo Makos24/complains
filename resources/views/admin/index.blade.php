@@ -29,7 +29,7 @@
                     <a href="#" class="no-underline text-white text-2xl">
                         {{App\Complain::whereDate('created_at', \Carbon\Carbon::today())->count()}}
                     </a>
-                    <a href="{{route('complains.index')}}" class="no-underline text-white text-lg">
+                    <a href="{{route('complains.today')}}" class="no-underline text-white text-lg">
                         Complains Filed Today
                     </a>
                 </div>
@@ -63,6 +63,7 @@
                 Dashboard
             </div>
 
+        @if(auth()->user()->hasRole('admin'))
             <div class="w-full p-6">
                 <ul class="flex">
                     <li class="flex-1 mr-2">
@@ -76,6 +77,7 @@
                     </li>
                 </ul>
             </div>
+            @endif
         </div>
 
         <div class="break-words bg-white border border-2 rounded shadow-md">

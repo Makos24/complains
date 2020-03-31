@@ -31,7 +31,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($complains->where('status', 0) as $complain)
+                        @foreach($complains->where('created_at', \Carbon\Carbon::today()) as $complain)
                         <tr>
 
                             <td class="border px-4 py-2">{{$complain->plot_no}}</td>
@@ -46,7 +46,7 @@
                             <td class="border px-4 py-2">
 
 
-                                <a href="{{route('complains.print', $complain->id)}}" target="_blank" wire:click="$emit('complainPrint',{{$complain->id}})" class="bg-blue-300 cursor-pointer rounded p-1 text-white">
+                                <a href="{{route('complains.print', $complain->id)}}" wire:click="$emit('complainPrint',{{$complain->id}})" class="bg-blue-300 cursor-pointer rounded p-1 text-white">
                                     <i class="fa fa-edit"></i>Print</a>
                                     @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('sub-admin'))
                                 <a href="#" wire:click="$emit('complainEdit',{{$complain->id}})" class="bg-teal-300 cursor-pointer rounded p-1 text-white">
