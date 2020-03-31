@@ -39,6 +39,8 @@ class EditComplain extends Component
         if(!empty($this->b1) && $this->pt == 2){
             $this->amount = ($this->b1 * $this->opt->c1) + ($this->b1 * $this->opt->d1);
 
+        }elseif($this->pt == 1){
+            $this->amount = $this->opt->fx_amount;
         }
 
         $services = Service::all();

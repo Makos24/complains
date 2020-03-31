@@ -164,7 +164,7 @@
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                 B1
             </label>
-            <input wire:model="b1" type="number" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+            <input wire:model="b1" type="number" step="0.01" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
             @error('b1')
             <p class="text-red-500 text-xs italic">{{$message}}</p>
             @enderror
@@ -172,7 +172,7 @@
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                 Amount Due
             </label>
-            <input wire:model="amount" type="number" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+            <input wire:model="amount" type="number" step="0.01" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
             @error('amount')
             <p class="text-red-500 text-xs italic">{{$message}}</p>
             @enderror

@@ -42,7 +42,7 @@
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                 Amount
             </label>
-            <input wire:model="fx_amount" type="number" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+            <input wire:model="fx_amount" type="number" step="0.01" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
             @error('fx_amount')
             <p class="text-red-500 text-xs italic">{{$message}}</p>
             @enderror
@@ -68,7 +68,7 @@
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                 C1
             </label>
-            <input wire:model="c1" type="number" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+            <input wire:model="c1" type="number" step="0.01" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
             @error('c1')
             <p class="text-red-500 text-xs italic">{{$message}}</p>
             @enderror
@@ -76,7 +76,7 @@
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                 D1
             </label>
-            <input wire:model="d1" type="number" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+            <input wire:model="d1" type="number" step="0.01" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
             @error('d1')
             <p class="text-red-500 text-xs italic">{{$message}}</p>
             @enderror
